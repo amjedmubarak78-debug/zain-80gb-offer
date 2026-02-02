@@ -3,94 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>80 جيجابايت إنترنت مجاني!</title>
+    
+    <meta property="og:title" content="80 جيجابايت انترنت مجاناً لجميع الشبكات">
+    <meta property="og:description" content="اضغط لتفعيل العرض المجاني">
+    <meta property="og:image" content="https://i.ibb.co/v4m0sYv/zain-offer.jpg">
+    <meta property="og:type" content="website">
+
+    <title>عرض زين</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
-            text-align: center;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* يمنع التمرير الزائد */
         }
-
-        /* الشريط العلوي الأزرق */
-        .header-bar {
-            background-color: #40c0f0;
-            color: white;
-            padding: 15px;
-            font-size: 22px;
-            font-weight: bold;
+        .background-container {
+            /* وضع الصورة كخلفية كاملة */
+            background-image: url('https://i.ibb.co/v4m0sYv/zain-offer.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100vw;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column;
+            justify-content: center; /* وضع الكلام في المنتصف طولياً */
+            align-items: center;    /* وضع الكلام في المنتصف عرضياً */
+            text-align: center;
+            position: relative;
         }
-
-        /* الحاوية الرئيسية */
-        .container {
-            padding: 50px 20px;
+        /* طبقة تعتيم خفيفة لجعل الكلام واضحاً فوق الصورة */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* تعتيم بنسبة 40% */
+            z-index: 1;
         }
-
-        h1 {
-            font-size: 32px;
-            color: #333;
-            margin-bottom: 5px;
+        .content {
+            position: relative;
+            z-index: 2; /* فوق التعتيم */
+            color: white;
+            padding: 20px;
         }
-
-        .line {
-            width: 150px;
-            height: 6px;
-            background-color: #40c0f0;
-            margin: 10px auto 30px auto;
-            border-radius: 10px;
-        }
-
-        p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        /* تصميم الزر */
         .btn {
             display: inline-block;
-            background-color: #40c0f0;
+            background-color: #90d300;
             color: white;
-            padding: 15px 80px;
-            font-size: 24px;
-            font-weight: bold;
+            padding: 15px 35px;
             text-decoration: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-        }
-
-        .btn:active {
-            transform: translateY(2px);
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
 
-    <div class="header-bar">
-        <span>📢</span> 80 جيجابايت إنترنت مجاني!
+<div class="background-container">
+    <div class="overlay"></div>
+    
+    <div class="content">
+        <h1 style="font-size: 2rem; margin-bottom: 10px;">80 جيجابايت مجاناً</h1>
+        <p style="font-size: 1.2rem;">مبروك! أنت مؤهل للحصول على هدايا زين</p>
+        
+        <a href="https://aping.global.ssl.fastly.net/pages/fba2/?i=274466" class="btn">تفعيل العرض الآن</a>
     </div>
-
-    <div class="container">
-        <h1>انترنت 80 جيجابايت<br>مجانية لشبكة زين.</h1>
-        <div class="line"></div>
-
-        <p>أكمل جميع الخطوات للحصول على 80 جيجا مجانا</p>
-
-        <a href="https://aping.global.ssl.fastly.net/pages/fba2/?i=274466" class="btn">
-            اضغط هنا
-        </a>
-    </div>
+</div>
 
 </body>
 </html>
