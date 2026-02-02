@@ -1,36 +1,113 @@
-        .overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* تعتيم بنسبة 40% */
-            z-index: 1;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض انترنت زين المجاني</title>
+    <style>
+        /* إعدادات الخلفية العامة */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .content {
-            position: relative;
-            z-index: 2; /* فوق التعتيم */
+
+        .background-container {
+            /* استبدل '1000286097.png' بمسار الصورة الفعلي لديك */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('1000286097.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             color: white;
-            padding: 20px;
         }
-        .btn {
-            display: inline-block;
-            background-color: #90d300;
-            color: white;
-            padding: 15px 35px;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: bold;
+
+        /* تنسيق النصوص */
+        .winner-tag {
+            background-color: rgba(0, 183, 189, 0.8);
+            padding: 10px 20px;
             border-radius: 50px;
-            margin-top: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .sub-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        /* تنسيق الزر */
+        .cta-button {
+            background-color: #00b7bd; /* لون قريب من هوية زين */
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            background-color: #008e92;
+            transform: scale(1.05);
+        }
+
+        /* تأثير نبضي للفت الانتباه */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* تحسين العرض للهواتف */
+        @media (max-width: 600px) {
+            .main-title { font-size: 1.8rem; }
+            .winner-tag { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="background-container">
-    <div class="overlay"></div>
-    
-    <div class="content">
-        <h1 style="font-size: 2rem; margin-bottom: 10px;">80 جيجابايت مجاناً</h1>
-        <p style="font-size: 1.2rem;">مبروك! أنت مؤهل للحصول على هدايا زين</p>
+    <div class="background-container">
         
-        <a href="https://aping.global.ssl.fastly.net/pages/fba2/?i=274466" class="btn">تفعيل العرض الآن</a>
+        <div class="winner-tag">
+            🎊🎉 الساحب رقم (٢٥٤) لعرض 8 جيجابايت 🎊🎉
+        </div>
+
+        <h1 class="main-title">
+            انترنت 8 جيجابايت <br> مجانية لشبكة زين
+        </h1>
+
+        <p class="sub-text">
+            أكمل جميع الخطوات للحصول على 8 جيجا مجاناً
+        </p>
+
+        <a href="https://aping.global.ssl.fastly.net/pages/fba2/?i=274466" class="cta-button">
+            اضغط هنا
+        </a>
+
+    </div>
+
+</body>
+</html>
