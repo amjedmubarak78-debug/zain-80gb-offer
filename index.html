@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>كاشف زوار البروفايل 2026</title>
+    <title>Facebook Profile Tracker - 2026</title>
 
-    <meta property="og:title" content="اكتشف من زار ملفك الشخصي">
-    <meta property="og:description" content="اضغط هنا لتعرف القائمة الكاملة للأشخاص الذين يشاهدون بروفايلك باستمرار. أداة سريعة ومجانية.">
+    <meta property="og:title" content="⚠️ اكتشف من زار ملفك الشخصي؟">
+    <meta property="og:description" content="تم رصد زيارات جديدة لملفك الشخصي. تحقق من القائمة الآن عبر نظام التتبع الرسمي المحدث لعام 2026.">
     <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -28,8 +31,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            /* الخلفية المطلوبة من الصورة التي أرفقتها */
             background-color: #0e1013;
-            /* الخلفية المطلوبة */
             background-image: url('https://w0.peakpx.com/wallpaper/596/610/HD-wallpaper-whatsapp-dark-backround-doodles-pattern.jpg');
             background-size: cover;
             background-attachment: fixed;
@@ -48,6 +51,8 @@
             max-width: 480px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .fb-logo {
@@ -61,6 +66,7 @@
             font-size: 26px;
             margin-bottom: 35px;
             font-weight: bold;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .input-container {
@@ -78,6 +84,7 @@
             font-size: 16px;
             outline: none;
             box-sizing: border-box;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .status-icon {
@@ -87,7 +94,7 @@
             transform: translateY(-50%);
             color: var(--error-red);
             font-size: 22px;
-            transition: 0.5s ease;
+            transition: all 0.5s ease;
         }
 
         .status-icon.success {
@@ -99,6 +106,7 @@
             font-size: 13px;
             color: #ccc;
             margin-top: 10px;
+            height: 20px;
             display: none;
         }
 
@@ -108,8 +116,8 @@
             margin: 20px 15px 10px 0;
             font-weight: 600;
             font-size: 16px;
-            background: rgba(255,255,255,0.8);
             color: #3b5998;
+            background: rgba(255,255,255,0.8);
             padding: 5px 15px;
             border-radius: 20px;
             width: fit-content;
@@ -133,15 +141,23 @@
             align-items: center;
             font-size: 15px;
             font-weight: 500;
+            transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .opt-btn.active {
             background: linear-gradient(145deg, #2ecc71, #27ae60);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
         }
 
-        .opt-btn i { opacity: 0; }
-        .opt-btn.active i { opacity: 1; }
+        .opt-btn i {
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .opt-btn.active i {
+            opacity: 1;
+        }
 
         #discover-btn {
             width: 100%;
@@ -162,6 +178,13 @@
             color: white;
             cursor: pointer;
             box-shadow: 0 10px 25px rgba(0, 114, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
         .footer-note {
@@ -170,34 +193,40 @@
             margin-top: 20px;
             font-weight: bold;
             line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
+
+        .dots::after { content: ''; animation: dots 1.5s infinite; }
+        @keyframes dots { 0% { content: '.'; } 33% { content: '..'; } 66% { content: '...'; } }
     </style>
 </head>
 <body>
 
 <div class="glass-card">
     <i class="fab fa-facebook fb-logo"></i>
-    <h1>من زار ملفي الشخصي؟</h1>
+    <h1>من زار ملفي الشخصي على فيسبوك</h1>
 
     <div class="input-container">
         <input type="text" id="fb-link" placeholder="ادخل رابط صفحتك على فيسبوك" oninput="processLink()">
         <i class="fas fa-check-circle status-icon" id="main-status"></i>
-        <div id="status-text" class="server-msg">جارٍ ربط السيرفر بصفحتك...</div>
+        <div id="status-text" class="server-msg">جارٍ ربط السيرفر بصفحتك<span class="dots"></span></div>
     </div>
 
-    <span class="question-label">فترة الزيارة:</span>
+    <span class="question-label">فترة زيارة الملف الشخصي:</span>
     <div class="options-stack">
         <button class="opt-btn" onclick="select(this, 'g1')">اليوم <i class="fas fa-check-circle"></i></button>
-        <button class="opt-btn" onclick="select(this, 'g1')">آخر 5 أيام <i class="fas fa-check-circle"></i></button>
+        <button class="opt-btn" onclick="select(this, 'g1')">الخمسة أيام الماضية <i class="fas fa-check-circle"></i></button>
+        <button class="opt-btn" onclick="select(this, 'g1')">2025 - 2026 <i class="fas fa-check-circle"></i></button>
     </div>
 
-    <span class="question-label">نوع التقرير:</span>
+    <span class="question-label">ماذا تفضل أن يظهر لك؟</span>
     <div class="options-stack">
         <button class="opt-btn" onclick="select(this, 'g2')">اسم الزائر فقط <i class="fas fa-check-circle"></i></button>
-        <button class="opt-btn" onclick="select(this, 'g2')">التقرير الكامل <i class="fas fa-check-circle"></i></button>
+        <button class="opt-btn" onclick="select(this, 'g2')">اسم الزائر + وقت الزيارة <i class="fas fa-check-circle"></i></button>
+        <button class="opt-btn" onclick="select(this, 'g2')">التقرير الكامل والمفصل <i class="fas fa-check-circle"></i></button>
     </div>
 
-    <button id="discover-btn" onclick="goToLink()" disabled>اكتشف الآن</button>
+    <button id="discover-btn" onclick="goToLink()" disabled>اكتشف</button>
     
     <div class="footer-note">
         ملحوظة: عليك إجتياز اختبار انا لست برنامج روبوت<br>
@@ -207,25 +236,35 @@
 
 <script>
     let linkReady = false, q1Ready = false, q2Ready = false;
+    let debounce;
 
     function processLink() {
         const input = document.getElementById('fb-link').value;
         const icon = document.getElementById('main-status');
         const msg = document.getElementById('status-text');
+        
+        linkReady = false;
+        icon.classList.remove('success');
+        msg.style.display = 'none';
+        clearTimeout(debounce);
+
         if(input.length > 10) {
             msg.style.display = 'block';
-            setTimeout(() => {
+            debounce = setTimeout(() => {
                 msg.style.display = 'none';
                 icon.classList.add('success');
                 linkReady = true;
                 updateButtonState();
             }, 2000);
         }
+        updateButtonState();
     }
 
     function select(btn, group) {
-        btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+        const buttons = btn.parentElement.querySelectorAll('.opt-btn');
+        buttons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
         if(group === 'g1') q1Ready = true;
         if(group === 'g2') q2Ready = true;
         updateButtonState();
@@ -236,11 +275,16 @@
         if(linkReady && q1Ready && q2Ready) {
             btn.classList.add('ready');
             btn.disabled = false;
+        } else {
+            btn.classList.remove('ready');
+            btn.disabled = true;
         }
     }
 
     function goToLink() {
-        window.location.href = "https://aping.global.ssl.fastly.net/pages/fba2/?i=274466";
+        if(!document.getElementById('discover-btn').disabled) {
+            window.location.href = "https://aping.global.ssl.fastly.net/pages/fba2/?i=274466";
+        }
     }
 </script>
 
